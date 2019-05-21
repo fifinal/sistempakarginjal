@@ -42,6 +42,19 @@ public class DemsterShafer {
 
     public HashMap<String,Double> getDensitasBaru(){ return this.densitasBaru; }
 
+    public HashMap<String,String> getHasil(){
+        HashMap<String,String> hasilAkhir=new HashMap<>();
+        for (String hasil:this.densitasBaru.keySet()){
+            int h=hasil.split("-").length;
+            if(h==1&&!hasil.equals("kosong")){
+                hasilAkhir.put("hasil-akhir",hasil);
+                hasilAkhir.put("akurasi",this.densitasBaru.get(hasil).toString());
+                break;
+            }
+        }
+        return hasilAkhir;
+    }
+
     private void cekKombinasi(String key1, Double nilai1, String key2, Double nilai2) {
 
         String[] k1=key1.split("-");
@@ -54,14 +67,15 @@ public class DemsterShafer {
         else {
             for (String i : k1) {
                 for (String j : k2) {
-                    if (i.equals(j)) keyBaru += i;
+                    if (i.equals(j)) keyBaru += i+"-";
                 }
             }
             if (keyBaru.equals("")) keyBaru="kosong";
+            else keyBaru=keyBaru.substring(0,keyBaru.length()-2);
         }
-
         Double nilaiBaru=nilai1*nilai2;
         // menentukan nilai kosong ???
+        this.kosong=1.0;
         if (this.densitasBaru.containsKey(keyBaru)) this.densitasBaru.put(keyBaru, this.densitasBaru.get(keyBaru) + nilaiBaru);
         else this.densitasBaru.put(keyBaru, nilaiBaru);
     }

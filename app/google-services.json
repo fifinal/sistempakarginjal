@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1001037085386",
+    "firebase_url": "https://sistempakarginjal.firebaseio.com",
+    "project_id": "sistempakarginjal",
+    "storage_bucket": "sistempakarginjal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001037085386:android:7a1fa0f31b92daeb",
+        "android_client_info": {
+          "package_name": "com.example.fifin.sistem_pakar_ginjal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001037085386-5g5ej58ce9nu3vbiav4s38hir7m4kbg0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANb8tvOHjfgdcOJu1HRkVOHm49dDH6oN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001037085386-5g5ej58ce9nu3vbiav4s38hir7m4kbg0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,20 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".DiagnosaActivity">
-
-    <ListView
-        android:id="@+id/lv_gejala"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ListView>
-    <Button
-        android:id="@+id/btn_diagnosa"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Diagnosa"/>
-</android.support.constraint.ConstraintLayout>
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/lightgreen">
+
+            </View>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="Pilih Gejala yang Anda Alami"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/lightgreen">
+            </View>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_gejala"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+        <Button
+            android:id="@+id/btn_diagnosa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:textColor="@color/lightgreen"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Diagnosa"/>
+    </LinearLayout>
+
+</ScrollView>

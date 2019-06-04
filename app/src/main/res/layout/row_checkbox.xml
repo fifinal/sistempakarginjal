@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <CheckedTextView  xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/cb_tv_gejala"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:checkMark="?android:listChoiceIndicatorMultiple"/>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cb_tv_gejala"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:checkMark="?android:listChoiceIndicatorMultiple"
+    android:checked="true"
+    android:gravity="center_vertical"
+    android:padding="15dp"
+    android:textSize="16dp"
+    android:text="gejala 1"
+    android:textColor="@color/white" />
 

@@ -1,39 +1,54 @@
 package com.example.fifin.sistem_pakar_ginjal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    ImageButton btnDiagnosa, btnInfo,btnAplikasi,btnPakar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView txtJudul=(TextView)findViewById(R.id.txt_judul);
-        TextView txtJudul2=(TextView)findViewById(R.id.txt_judul2);
-        HashMap<String, Double> densitas= new HashMap<>();
+        btnDiagnosa=(ImageButton) findViewById(R.id.btn_diagnosa);
+        btnInfo=(ImageButton) findViewById(R.id.btn_info);
+        btnAplikasi=(ImageButton) findViewById(R.id.btn_aplikasi);
+        btnPakar=(ImageButton) findViewById(R.id.btn_pakar);
 
-        densitas.put("p1-p2-p3",0.8);
-        densitas.put("p1",0.7);
-        densitas.put("p1-p3",0.4);
-        DemsterShaferTest Df=new DemsterShaferTest(densitas);
-        String h=Df.getHasil().get("akurasi");
-        String hasil="";
-        String hasil2="";
-        for(String i:Df.coba.keySet()){
-            hasil+=i+(" = "+Df.coba.get(i).toString());
+        btnDiagnosa.setOnClickListener(this);
+        btnInfo.setOnClickListener(this);
+        btnAplikasi.setOnClickListener(this);
+        btnPakar.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()){
+            case R.id.btn_diagnosa:
+                intent=new Intent(MainActivity.this,DiagnosaActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_info:
+                intent=new Intent(MainActivity.this,InfoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_aplikasi:
+                intent=new Intent(MainActivity.this,MyAppActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_pakar:
+                intent=new Intent(MainActivity.this,PakarActivity.class);
+                startActivity(intent);
+                break;
         }
-        for(String i:Df.getDensitasBaru().keySet()){
-
-            hasil2+=i+" : "+Df.getDensitasBaru().get(i).toString();
-        }
-        txtJudul.setText(hasil);
-        txtJudul2.setText(hasil2);
-
     }
 }

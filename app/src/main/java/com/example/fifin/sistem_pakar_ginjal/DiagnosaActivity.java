@@ -1,5 +1,6 @@
 package com.example.fifin.sistem_pakar_ginjal;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,14 +59,19 @@ public class DiagnosaActivity extends AppCompatActivity {
                     }
                 }
 
-                Toast.makeText(getApplicationContext(),((TextView)view).getText().toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),gejalaTerpilih.size(),Toast.LENGTH_SHORT).show();
             }
         });
         btnDiagnosa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (gejalaTerpilih.size() <= 1) {
+                    Toast.makeText(getApplicationContext(), "Pili Minimal @ gejala", Toast.LENGTH_LONG).show();
+                } else {
+
+
 //                HashMap<String, Double> densitas= new HashMap<>();
-                ArrayList<HashMap<String,Double>> p=new ArrayList<>();
+                    ArrayList<HashMap<String, Double>> p = new ArrayList<>();
 //                densitas.put("p1",0.7);
 //                p.add(densitas);
 //                densitas= new HashMap<>();
@@ -74,26 +80,35 @@ public class DiagnosaActivity extends AppCompatActivity {
 //                densitas= new HashMap<>();
 //                densitas.put("p1-p2-p3",0.8);
 //                p.add(densitas);
-                for (ModelDensitas m:gejalaTerpilih){
-                    p.add(m.getDensitas());
-                }
-                DemsterShaferTest Df=new DemsterShaferTest(p);
+                    for (ModelDensitas m : gejalaTerpilih) {
+                        p.add(m.getDensitas());
+                    }
+                    DemsterShaferTest Df = new DemsterShaferTest(p);
 //        String h=Df.getHasil().get("akurasi");
 //        for(String i:Df.coba.keySet()){
 //            hasil+=i+(" = "+Df.coba.get(i).toString());
 //        }
-                String[] hasil2=new String[Df.densitas.size()];
-                int i=0;
-                for(HashMap<String,Double> d : Df.densitas){
+                    String[] hasil2 = new String[Df.densitas.size()];
+                    int i = 0;
+                    for (HashMap<String, Double> d : Df.densitas) {
 
-                    String hasil="";
-                    for(String k:d.keySet()){
+                        String hasil = "";
+                        for (String k : d.keySet()) {
 
-                        hasil+=k+" : "+d.get(k).toString()+"\n";
+                            hasil += k + " : " + d.get(k).toString() + "\n";
+                        }
+                        hasil2[i] = hasil;
+                        i++;
+
                     }
-                    hasil2[i]=hasil;
-                    i++;
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.row_checkbox, R.id.cb_tv_gejala, hasil2);
+                    adapter.setDropDownViewResource(R.layout.row_checkbox);
 
+                    lvGejala.setAdapter(adapter);
+                    Intent intent = new Intent(DiagnosaActivity.this, HasilActivity.class);
+                    intent.putExtra(HasilActivity.KODE_GEJALA, new String[]{});
+                    intent.putExtra(HasilActivity.BOBOT, new Double[]{});
+                    startActivity(intent);
                 }
             }
         });
@@ -105,10 +120,12 @@ public class DiagnosaActivity extends AppCompatActivity {
                 String items[] =new String[queryDocumentSnapshots.size()];
                 int i=0;
                 for (DocumentSnapshot doc:queryDocumentSnapshots){
+
                     HashMap<String,Double> densitas=new HashMap<>();
                     densitas.put(doc.getString("penyakit"),doc.getDouble("bobot"));
                     ModelDensitas modelDensitas=new ModelDensitas(i,densitas);
                     listGejala.add(modelDensitas);
+
                     items[i]=doc.getString("gejala");
                     i++;
                 }
@@ -117,6 +134,7 @@ public class DiagnosaActivity extends AppCompatActivity {
                 adapter.setDropDownViewResource(R.layout.row_checkbox);
 
                 lvGejala.setAdapter(adapter);
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

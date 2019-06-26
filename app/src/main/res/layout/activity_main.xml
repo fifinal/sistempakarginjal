@@ -1,66 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/dokterbg"
     tools:context=".MainActivity">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:background="@color/lightgreen"
-        android:gravity="center"
-        android:padding="30dp"
-        android:orientation="vertical">
-        <ImageButton
-            android:id="@+id/btn_diagnosa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/lightgreen"
-            android:src="@drawable/diagnosa"/>
-        <TextView
-            android:textAlignment="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:text="Diagnosa"/>
-    </LinearLayout>
-    <!--<ImageButton-->
-        <!--android:id="@+id/img_btn_1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@mipmap/ic_launcher"/>-->
-    <!--<ImageButton-->
-        <!--android:id="@+id/img_btn_2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@mipmap/ic_launcher"/>-->
-    <!--<ImageButton-->
-        <!--android:id="@+id/img_btn_3"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@mipmap/ic_launcher"/>-->
-    <!--<ImageButton-->
-        <!--android:id="@+id/img_btn_4"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@mipmap/ic_launcher"/>-->
-    <LinearLayout
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="150dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal">
@@ -72,27 +28,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/btn_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/btn_diagnosa"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:background="@color/colorPrimary"
-                    android:src="@drawable/info"/>
+                    android:src="@drawable/stethoscope"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:text="Info Penyakit Ginjal"
-                    android:textColor="@color/white"
-                    android:textSize="20dp" />
+                    android:text="DIAGNOSA"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp" />
             </LinearLayout>
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/white"></View>
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -101,29 +52,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/btn_aplikasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:background="@color/colorPrimary"
                     android:src="@drawable/app"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="5dp"
-                    android:text="Tentang Aplikasi"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp"
+                    android:text="TENTANG"/>
             </LinearLayout>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="150dp"
             android:gravity="center"
             android:layout_marginTop="30dp"
             android:orientation="horizontal">
@@ -135,27 +85,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/btn3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/btn_info"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:background="@color/blue"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/treatment"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp"
                     android:layout_gravity="center"
-                    android:textColor="@color/white"
                     android:layout_marginTop="5dp"
-                    android:text="Network Meter"/>
+                    android:text="INFO"/>
             </LinearLayout>
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/white"></View>
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -164,25 +110,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/btn_pakar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:background="@color/colorPrimary"
-                    android:src="@drawable/pakar"/>
+                    android:src="@drawable/doctor"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp"
                     android:layout_gravity="center"
-                    android:textColor="@color/white"
                     android:layout_marginTop="5dp"
-                    android:text="Pakar"/>
+                    android:text="PAKAR"/>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

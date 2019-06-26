@@ -6,21 +6,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    ImageButton btnDiagnosa, btnInfo,btnAplikasi,btnPakar;
+    ImageView btnDiagnosa, btnInfo,btnAplikasi,btnPakar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnDiagnosa=(ImageButton) findViewById(R.id.btn_diagnosa);
-        btnInfo=(ImageButton) findViewById(R.id.btn_info);
-        btnAplikasi=(ImageButton) findViewById(R.id.btn_aplikasi);
-        btnPakar=(ImageButton) findViewById(R.id.btn_pakar);
+        btnDiagnosa=(ImageView) findViewById(R.id.btn_diagnosa);
+        btnInfo=(ImageView) findViewById(R.id.btn_info);
+        btnAplikasi=(ImageView) findViewById(R.id.btn_aplikasi);
+        btnPakar=(ImageView) findViewById(R.id.btn_pakar);
 
         btnDiagnosa.setOnClickListener(this);
         btnInfo.setOnClickListener(this);

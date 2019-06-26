@@ -65,7 +65,7 @@ public class DemsterShaferTest {
 //            this.densitas.add(a);
            this.densitasBaru.put(i,this.densitasBaru.get(i)/(1-((this.evidenKonflik>0.0)?this.evidenKonflik:this.kosong)));
         }
-//        this.densitas.add(this.densitasBaru);
+        this.densitas.add(this.densitasBaru);
 
         return this.densitasBaru;
     }
@@ -90,9 +90,9 @@ public class DemsterShaferTest {
             if (keyBaru.equals("")) this.evidenKonflik+=nilaiBaru; //jika keyBaru tidak ada anggota maka ada evidenkonflik 
             keyBaru=keyBaru.substring(0,keyBaru.length()-1); // menghilangkan tanda "-" pada akhir string
         }
-        HashMap<String,Double> a=new HashMap<>();
-        a.put(keyBaru,nilaiBaru);
-        this.densitas.add(a);
+//        HashMap<String,Double> a=new HashMap<>();
+//        a.put(keyBaru,nilaiBaru);
+//        this.densitas.add(a);
         // jika keyBaru sudah ada pada densitsBaru, tambah nilaiBaru dgn nilai dr keyBaru sebelumnya (seanggota himpunan)
         if (this.densitasBaru.containsKey(keyBaru)) this.densitasBaru.put(keyBaru, (this.densitasBaru.get(keyBaru) + nilaiBaru));
 //        else this.densitasBaru.put(keyBaru, nilaiBaru);

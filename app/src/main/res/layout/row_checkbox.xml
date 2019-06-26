@@ -5,8 +5,12 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimaryDark"
     android:checkMark="?android:listChoiceIndicatorMultiple"
+    android:checked="false"
     android:gravity="center_vertical"
-    android:padding="15dp"
-    android:textSize="16dp"
-    android:textColor="@color/white" />
+    android:paddingLeft="15dp"
+    android:paddingTop="20dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="20dp"
+    android:textColor="@color/white"
+    android:textSize="18dp" />
 

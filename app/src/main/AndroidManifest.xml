@@ -6,12 +6,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/urban"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/urban"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,9 @@
         <activity android:name=".PakarActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".SolusiActivity" />
-        <activity android:name=".MyAppActivity"></activity>
+        <activity android:name=".MyAppActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".HasilActivity"></activity>
     </application>
 
 </manifest>

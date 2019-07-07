@@ -1,14 +1,34 @@
 package com.example.fifin.sistem_pakar_ginjal;
 
+import android.app.UiAutomation;
+
 import java.util.HashMap;
 
 public class ModelDensitas {
     private int position;
-    private HashMap<String ,Double> densitas;
+    private String penyakit;
+    private Double bobot;
 
-    public ModelDensitas(int position, HashMap<String, Double> densitas) {
+    public ModelDensitas(int position, String penyakit, Double bobot) {
         this.position = position;
-        this.densitas = densitas;
+        this.penyakit = penyakit;
+        this.bobot = bobot;
+    }
+
+    public String getPenyakit() {
+        return penyakit;
+    }
+
+    public void setPenyakit(String penyakit) {
+        this.penyakit = penyakit;
+    }
+
+    public Double getBobot() {
+        return bobot;
+    }
+
+    public void setBobot(Double bobot) {
+        this.bobot = bobot;
     }
 
     public int getPosition() {
@@ -19,11 +39,4 @@ public class ModelDensitas {
         this.position = position;
     }
 
-    public HashMap<String, Double> getDensitas() {
-        return densitas;
-    }
-
-    public void setDensitas(HashMap<String, Double> densitas) {
-        this.densitas = densitas;
-    }
 }

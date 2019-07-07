@@ -27,6 +27,7 @@ import java.util.HashMap;
 
 public class DiagnosaActivity extends AppCompatActivity {
     private ListView lvGejala;
+    private TextView tvLoad;
     private Button btnDiagnosa;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
     private CollectionReference gejala=db.collection("gejala");
@@ -37,11 +38,10 @@ public class DiagnosaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosa);
+        tvLoad=(TextView) findViewById(R.id.tv_load);
         lvGejala=(ListView)findViewById(R.id.lv_gejala);
         btnDiagnosa=(Button) findViewById(R.id.btn_diagnosa);
         lvGejala.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
-        String items[] =new String[]{"list gejala 1","list gejala 2","list gejala 3","list gejala 4","list gejala 5","list gejala 6","list gejala 7","list gejala 8","list gejala 9","list gejala 10","list gejala 11","list gejala 12","list gejala 13","list gejala 14"};
 
         getGejala();
         lvGejala.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,59 +55,33 @@ public class DiagnosaActivity extends AppCompatActivity {
                     for(int i=0;i<gejalaTerpilih.size();i++){
                         if(gejalaTerpilih.get(i).getPosition()==position){
                             gejalaTerpilih.remove(i);
+                            break;
                         }
                     }
                 }
-
-                Toast.makeText(getApplicationContext(),gejalaTerpilih.size(),Toast.LENGTH_SHORT).show();
+//        int size=gejalaTerpilih.size();
+//                Toast.makeText(getApplicationContext(),String.valueOf(size)+gejalaTerpilih.get(position).getBobot().toString(),Toast.LENGTH_SHORT).show();
             }
         });
+
         btnDiagnosa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (gejalaTerpilih.size() <= 1) {
-                    Toast.makeText(getApplicationContext(), "Pili Minimal @ gejala", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Pilih Minimal 2 gejala", Toast.LENGTH_LONG).show();
                 } else {
+                    int panjangGejalaTerpilih=gejalaTerpilih.size();
+                    String[] penyakit=new String[panjangGejalaTerpilih];
+                    double[] bobot=new double[panjangGejalaTerpilih];
 
-
-//                HashMap<String, Double> densitas= new HashMap<>();
-                    ArrayList<HashMap<String, Double>> p = new ArrayList<>();
-//                densitas.put("p1",0.7);
-//                p.add(densitas);
-//                densitas= new HashMap<>();
-//                densitas.put("p1-p3",0.4);
-//                p.add(densitas);
-//                densitas= new HashMap<>();
-//                densitas.put("p1-p2-p3",0.8);
-//                p.add(densitas);
-                    for (ModelDensitas m : gejalaTerpilih) {
-                        p.add(m.getDensitas());
+                    for (int i=0;i<panjangGejalaTerpilih; i++) {
+                       penyakit[i]=gejalaTerpilih.get(i).getPenyakit();
+                       bobot[i]=gejalaTerpilih.get(i).getBobot();
                     }
-                    DemsterShaferTest Df = new DemsterShaferTest(p);
-//        String h=Df.getHasil().get("akurasi");
-//        for(String i:Df.coba.keySet()){
-//            hasil+=i+(" = "+Df.coba.get(i).toString());
-//        }
-                    String[] hasil2 = new String[Df.densitas.size()];
-                    int i = 0;
-                    for (HashMap<String, Double> d : Df.densitas) {
 
-                        String hasil = "";
-                        for (String k : d.keySet()) {
-
-                            hasil += k + " : " + d.get(k).toString() + "\n";
-                        }
-                        hasil2[i] = hasil;
-                        i++;
-
-                    }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.row_checkbox, R.id.cb_tv_gejala, hasil2);
-                    adapter.setDropDownViewResource(R.layout.row_checkbox);
-
-                    lvGejala.setAdapter(adapter);
                     Intent intent = new Intent(DiagnosaActivity.this, HasilActivity.class);
-                    intent.putExtra(HasilActivity.KODE_GEJALA, new String[]{});
-                    intent.putExtra(HasilActivity.BOBOT, new Double[]{});
+                    intent.putExtra(HasilActivity.KODE_GEJALA,penyakit);
+                    intent.putExtra(HasilActivity.BOBOT, bobot);
                     startActivity(intent);
                 }
             }
@@ -121,18 +95,15 @@ public class DiagnosaActivity extends AppCompatActivity {
                 int i=0;
                 for (DocumentSnapshot doc:queryDocumentSnapshots){
 
-                    HashMap<String,Double> densitas=new HashMap<>();
-                    densitas.put(doc.getString("penyakit"),doc.getDouble("bobot"));
-                    ModelDensitas modelDensitas=new ModelDensitas(i,densitas);
+                    ModelDensitas modelDensitas=new ModelDensitas(i,doc.getString("penyakit"),doc.getDouble("bobot"));
                     listGejala.add(modelDensitas);
 
                     items[i]=doc.getString("gejala");
                     i++;
                 }
-
+                tvLoad.setVisibility(View.GONE);
                 ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(),R.layout.row_checkbox,R.id.cb_tv_gejala,items);
-                adapter.setDropDownViewResource(R.layout.row_checkbox);
-
+//                adapter.setDropDownViewResource(R.layout.row_checkbox);
                 lvGejala.setAdapter(adapter);
 
             }

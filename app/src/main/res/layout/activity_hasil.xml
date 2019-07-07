@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
             <View
                 android:layout_width="match_parent"
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:text="Dari gejala-gejala yang anda pilih, sistem pakar mendeteksi bahwa anda menderita penyakit : "
             android:textSize="20sp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/white"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,12 +100,18 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"/>
         </LinearLayout>
-
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:src="@drawable/urban"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         android:padding="10dp">

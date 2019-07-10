@@ -78,8 +78,8 @@ public class DemsterShaferTest {
         // jika keyBaru ada anggota himpunan
         else if(!keyBaru.equals(""))  this.densitasBaru.put(keyBaru, nilaiBaru);
         HashMap<String,Double> hasilKombinasi=new HashMap<>();
-        hasilKombinasi.put(key1,nilai1);
-        hasilKombinasi.put(key2,nilai2);
+        hasilKombinasi.put("densitas 1{"+key1+"}",nilai1);
+        hasilKombinasi.put("densitas 2{"+key2+"}",nilai2);
         hasilKombinasi.put(keyBaru,nilaiBaru);
         this.kombinasi.add(hasilKombinasi);
 

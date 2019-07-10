@@ -20,10 +20,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class DiagnosaActivity extends AppCompatActivity {
     private ListView lvGejala;
@@ -93,8 +96,9 @@ public class DiagnosaActivity extends AppCompatActivity {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 String items[] =new String[queryDocumentSnapshots.size()];
                 int i=0;
-                for (DocumentSnapshot doc:queryDocumentSnapshots){
-
+                for (QueryDocumentSnapshot doc:queryDocumentSnapshots){
+//                    List<String> a=doc.get("penyakit");
+//                    ModelDensitas modelDensitas=doc.toObject(ModelDensitas.class);
                     ModelDensitas modelDensitas=new ModelDensitas(i,doc.getString("penyakit"),doc.getDouble("bobot"));
                     listGejala.add(modelDensitas);
 
